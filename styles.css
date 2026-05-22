@@ -1,0 +1,50 @@
+.container {
+    
+    margin: auto;
+    width: 170px;
+    height: 180px;
+    
+    padding: auto;
+    
+
+    
+}
+
+th {
+
+    margin-top: 2px;
+    margin-bottom: 2px;
+    margin-right: 2px;
+    margin-left: 2px;
+  
+}
+
+#display {
+    background-color: #e9ffe8;
+    border-left: 2px solid #348c32;
+    border-bottom: 2px solid #348c32;
+    border-radius: 5px;
+    
+    
+    width: 156px;
+}
+
+.row {
+
+    margin-top: 4px;
+    margin-bottom: 4px;
+}
+input{
+
+    color: #0c4f00;
+    background-color: #e9ffe8;
+    border:none;
+    border-radius: 3px;
+    
+
+}
+body{
+    background: url("green.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}

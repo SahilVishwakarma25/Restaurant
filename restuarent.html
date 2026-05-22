@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>The Foodie Club</title>
+  <link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins',sans-serif;
+    }
+
+    body{
+      background:#f4c928;
+    }
+
+    /* NAVBAR */
+
+    nav{
+      width:100%;
+      padding:25px 60px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .logo h1{
+      font-size:42px;
+      font-weight:700;
+      color:#000;
+      line-height:1;
+    }
+
+    .logo p{
+      font-size:12px;
+      margin-left:6px;
+      margin-top:3px;
+      color:#333;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:70px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#000;
+      font-weight:600;
+      font-size:18px;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:82%;
+      height:520px;
+      margin:10px auto 70px;
+      border-radius:40px;
+      overflow:hidden;
+      position:relative;
+    }
+
+    .hero img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+    }
+
+    .slider-btn{
+      position:absolute;
+      width:150px;
+      height:60px;
+      background:#fff;
+      border-radius:40px;
+    }
+
+    .top-btn{
+      top:70px;
+      right:230px;
+    }
+
+    .bottom-btn{
+      bottom:-10px;
+      left:42%;
+    }
+
+    .about{
+      position:absolute;
+      bottom:10px;
+      right:220px;
+      font-size:22px;
+      font-weight:500;
+      color:#000;
+    }
+
+    /* CATEGORY SECTION */
+
+    .category-section{
+      width:94%;
+      margin:0 auto;
+      background:#ececec;
+      padding:20px 30px 35px;
+    }
+
+    .category-section h2{
+      font-size:28px;
+      margin-bottom:30px;
+      font-weight:500;
+      color:#333;
+    }
+
+    .categories{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:15px;
+    }
+
+    .cat{
+      text-align:center;
+    }
+
+    .cat img{
+      width:120px;
+      height:120px;
+      border-radius:50%;
+      object-fit:cover;
+    }
+
+    .cat p{
+      margin-top:12px;
+      font-size:18px;
+      color:#333;
+    }
+
+    .arrow{
+      width:35px;
+      height:35px;
+      background:#fff;
+      border-radius:50%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:20px;
+      cursor:pointer;
+    }
+
+    /* MENU TITLE */
+
+    .menu-title{
+      width:150px;
+      margin:60px auto 40px;
+      text-align:center;
+      background:#ffd54a;
+      padding:10px 0;
+      border-radius:22px;
+      font-size:34px;
+      font-weight:700;
+      letter-spacing:2px;
+      position:relative;
+      color:#1d2258;
+      box-shadow:0 8px 0 #ff4d4d;
+    }
+
+    /* FOOD CARD SECTION */
+
+    .food-wrapper{
+      width:82%;
+      margin:0 auto 80px;
+      background:#ededed;
+      padding:25px;
+      border-radius:4px;
+    }
+
+    .tabs{
+      display:flex;
+      gap:30px;
+      margin-bottom:40px;
+    }
+
+    .tab{
+      padding:15px 45px;
+      border-radius:15px;
+      background:#fff;
+      font-size:20px;
+      font-weight:500;
+      color:#333;
+    }
+
+    .active{
+      background:#5f31ff;
+      color:#fff;
+      box-shadow:0 6px 10px rgba(0,0,0,0.15);
+    }
+
+    .popular{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-bottom:25px;
+    }
+
+    .popular h2{
+      font-size:40px;
+      color:#333;
+      font-weight:500;
+    }
+
+    .popular a{
+      text-decoration:none;
+      color:#5f31ff;
+      font-size:26px;
+      font-weight:600;
+    }
+
+    .cards{
+      display:flex;
+      gap:20px;
+    }
+
+    .card{
+      width:25%;
+      background:#fff;
+      border-radius:18px;
+      overflow:hidden;
+    }
+
+    .card img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:15px;
+    }
+
+    .distance{
+      color:#999;
+      font-size:14px;
+      margin-bottom:8px;
+    }
+
+    .food-name{
+      font-size:28px;
+      font-weight:500;
+      margin-bottom:12px;
+      color:#333;
+    }
+
+    .price-row{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
+
+    .price{
+      font-size:32px;
+      font-weight:700;
+    }
+
+    .old-price{
+      color:#999;
+      text-decoration:line-through;
+      margin-left:8px;
+      font-size:20px;
+    }
+
+    .rating{
+      font-size:22px;
+      color:#444;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1100px){
+
+      .cards{
+        flex-wrap:wrap;
+      }
+
+      .card{
+        width:48%;
+      }
+
+      .nav-links{
+        gap:25px;
+      }
+
+      .hero{
+        width:92%;
+      }
+
+      .food-wrapper{
+        width:92%;
+      }
+    }
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:20px;
+      }
+
+      .categories{
+        flex-wrap:wrap;
+        justify-content:center;
+      }
+
+      .card{
+        width:100%;
+      }
+
+      .tabs{
+        flex-wrap:wrap;
+      }
+
+      .popular h2{
+        font-size:28px;
+      }
+
+      .food-name{
+        font-size:22px;
+      }
+
+      .hero{
+        height:350px;
+      }
+
+      .slider-btn{
+        width:100px;
+        height:40px;
+      }
+
+      .top-btn{
+        right:40px;
+      }
+
+      .bottom-btn{
+        left:35%;
+      }
+    }
+    /* FOOTER */
+
+.footer{
+  background:#111;
+  color:#fff;
+  padding:70px 8% 20px;
+  margin-top:80px;
+  border-top-left-radius:40px;
+  border-top-right-radius:40px;
+}
+
+.footer-container{
+  display:grid;
+  grid-template-columns:2fr 1fr 1.2fr 1.5fr;
+  gap:50px;
+}
+
+.footer-about h2{
+  font-size:34px;
+  margin-bottom:18px;
+  color:#f4c928;
+}
+
+.footer-about p{
+  color:#ccc;
+  line-height:1.8;
+  font-size:15px;
+  max-width:350px;
+}
+
+.social-icons{
+  display:flex;
+  gap:15px;
+  margin-top:25px;
+}
+
+.social-icons a{
+  width:45px;
+  height:45px;
+  background:#222;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#fff;
+  font-size:18px;
+  transition:0.3s;
+}
+
+.social-icons a:hover{
+  background:#f4c928;
+  color:#000;
+  transform:translateY(-5px);
+}
+
+.footer-links h3,
+.footer-contact h3,
+.footer-newsletter h3{
+  font-size:24px;
+  margin-bottom:20px;
+  color:#f4c928;
+}
+
+.footer-links{
+  display:flex;
+  flex-direction:column;
+}
+
+.footer-links a{
+  text-decoration:none;
+  color:#ccc;
+  margin-bottom:12px;
+  transition:0.3s;
+}
+
+.footer-links a:hover{
+  color:#f4c928;
+  transform:translateX(5px);
+}
+
+.footer-contact p{
+  color:#ccc;
+  margin-bottom:14px;
+  font-size:15px;
+}
+
+.footer-newsletter p{
+  color:#ccc;
+  margin-bottom:20px;
+}
+
+.newsletter-box{
+  display:flex;
+  background:#222;
+  border-radius:50px;
+  overflow:hidden;
+}
+
+.newsletter-box input{
+  flex:1;
+  border:none;
+  outline:none;
+  background:transparent;
+  padding:14px 18px;
+  color:#fff;
+  font-size:14px;
+}
+
+.newsletter-box button{
+  border:none;
+  background:#f4c928;
+  color:#000;
+  padding:14px 22px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.newsletter-box button:hover{
+  background:#fff;
+}
+
+.footer-bottom{
+  border-top:1px solid #333;
+  margin-top:50px;
+  padding-top:20px;
+  text-align:center;
+  color:#999;
+  font-size:14px;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:1000px){
+
+  .footer-container{
+    grid-template-columns:1fr 1fr;
+  }
+
+}
+
+@media(max-width:700px){
+
+  .footer{
+    padding:60px 25px 20px;
+  }
+
+  .footer-container{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+
+  .newsletter-box{
+    flex-direction:column;
+    border-radius:20px;
+  }
+
+  .newsletter-box button{
+    width:100%;
+  }
+
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+
+  <nav>
+
+    <div class="logo">
+      <h1>The Foodie Club</h1>
+      <p>Delicious food for every mood</p>
+    </div>
+
+    <div class="nav-links">
+      <a href="#">HOME</a>
+      <a href="#">ABOUT US</a>
+      <a href="#">MENU</a>
+      <a href="#">CART</a>
+    </div>
+
+  </nav>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?q=80&w=1200&auto=format&fit=crop" alt="food">
+
+    <div class="slider-btn top-btn"></div>
+
+    <div class="slider-btn bottom-btn"></div>
+
+    <div class="about">ABOUT US</div>
+
+  </section>
+
+  <!-- CATEGORY SECTION -->
+
+  <section class="category-section">
+
+    <h2>Inspiration for your first order</h2>
+
+    <div class="categories">
+
+      <div class="cat">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?q=80&w=500&auto=format&fit=crop">
+        <p>Pizza</p>
+      </div>
+
+      <div class="cat">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?q=80&w=500&auto=format&fit=crop">
+        <p>Biryani</p>
+      </div>
+
+      <div class="cat">
+        <img src="https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=500&auto=format&fit=crop">
+        <p>Chicken</p>
+      </div>
+
+      <div class="cat">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=500&auto=format&fit=crop">
+        <p>Burger</p>
+      </div>
+
+      <div class="cat">
+        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?q=80&w=500&auto=format&fit=crop">
+        <p>Fried Rice</p>
+      </div>
+
+      <div class="cat">
+        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?q=80&w=500&auto=format&fit=crop">
+        <p>Thali</p>
+      </div>
+
+      <div class="arrow">›</div>
+
+    </div>
+
+  </section>
+
+  <!-- MENU TITLE -->
+
+  <div class="menu-title">
+    MENU
+  </div>
+
+  <!-- FOOD SECTION -->
+
+  <section class="food-wrapper">
+
+    <div class="tabs">
+      <div class="tab active">All Menu</div>
+      <div class="tab">Breakfast</div>
+      <div class="tab">Lunch</div>
+      <div class="tab">Dinner</div>
+      <div class="tab">Snack</div>
+    </div>
+
+    <div class="popular">
+      <h2>Popular This Weeks</h2>
+      <a href="#">See all</a>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1617093727343-374698b1b08d?q=80&w=500&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <div class="distance">✈ 3.5 km</div>
+
+          <div class="food-name">Ramen Symphon</div>
+
+          <div class="price-row">
+
+            <div>
+              <span class="price">$320</span>
+              <span class="old-price">$420</span>
+            </div>
+
+            <div class="rating">⭐ 4.8/5</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1562967914-608f82629710?q=80&w=500&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <div class="distance">✈ 3.5 km</div>
+
+          <div class="food-name">Chicken Black Frying</div>
+
+          <div class="price-row">
+
+            <div>
+              <span class="price">$320</span>
+              <span class="old-price">$420</span>
+            </div>
+
+            <div class="rating">⭐ 4.8/5</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?q=80&w=500&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <div class="distance">✈ 3.5 km</div>
+
+          <div class="food-name">Crispy Chicken Sticks</div>
+
+          <div class="price-row">
+
+            <div>
+              <span class="price">$320</span>
+              <span class="old-price">$420</span>
+            </div>
+
+            <div class="rating">⭐ 4.8/5</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=500&auto=format&fit=crop">
+
+        <div class="card-content">
+
+          <div class="distance">✈ 3.5 km</div>
+
+          <div class="food-name">Strawberry Croffle</div>
+
+          <div class="price-row">
+
+            <div>
+              <span class="price">$320</span>
+              <span class="old-price">$420</span>
+            </div>
+
+            <div class="rating">⭐ 4.8/5</div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+  <!-- FOOTER -->
+
+<footer class="footer">
+
+  <div class="footer-container">
+
+    <!-- LEFT -->
+
+    <div class="footer-about">
+
+      <h2>The Foodie Club</h2>
+
+      <p>
+        Serving happiness with every bite. Explore delicious meals,
+        fresh ingredients, and unforgettable taste experiences.
+      </p>
+
+      <div class="social-icons">
+
+        <a href="#">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="#">
+          <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+
+        <a href="#">
+          <i class="fab fa-youtube"></i>
+        </a>
+
+      </div>
+
+    </div>
+
+    <!-- QUICK LINKS -->
+
+    <div class="footer-links">
+
+      <h3>Quick Links</h3>
+
+      <a href="#">Home</a>
+      <a href="#">About Us</a>
+      <a href="#">Menu</a>
+      <a href="#">Cart</a>
+
+    </div>
+
+    <!-- CONTACT -->
+
+    <div class="footer-contact">
+
+      <h3>Contact</h3>
+
+      <p>📍 Mumbai, India</p>
+      <p>📞 +91 98765 43210</p>
+      <p>✉ foodieclub@gmail.com</p>
+
+    </div>
+
+    <!-- NEWSLETTER -->
+
+    <div class="footer-newsletter">
+
+      <h3>Newsletter</h3>
+
+      <p>Subscribe for latest offers & updates</p>
+
+      <div class="newsletter-box">
+
+        <input type="email" placeholder="Enter your email">
+
+        <button>Subscribe</button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 The Foodie Club • All Rights Reserved
+  </div>
+
+</footer>
+
+</body>
+</html>
